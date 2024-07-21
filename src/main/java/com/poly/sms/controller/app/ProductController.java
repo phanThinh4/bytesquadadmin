@@ -46,7 +46,11 @@ public class ProductController {
             updatedProduct.setProductName(productDetails.getProductName());
             updatedProduct.setQuantity(productDetails.getQuantity());
             updatedProduct.setUnitPrice(productDetails.getUnitPrice());
-            updatedProduct.setProductStatus(productDetails.getProductStatus());
+            if(productDetails.getQuantity() <= 10){
+                updatedProduct.setProductStatus(1);
+            }else{
+                updatedProduct.setProductStatus(0);
+            }
             updatedProduct.setDiscount(productDetails.getDiscount());
             updatedProduct.setDescription(productDetails.getDescription());
             return ResponseEntity.ok(productService.save(updatedProduct));
